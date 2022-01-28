@@ -2,11 +2,46 @@
 # @Author : Jface 
 # @desc :
 """
-添加学生
+查询学生
+# 1. 输入姓名
+# 2. 通过for遍历，取出一个字典user_dict
+    # 2.1 user_dict[‘name’]和输入姓名判断
+    # 2.1.1 如果相等，输出用户信息，退出循环
+# 3. for中的else，循环执行完毕，没有break，说明用户不存在，提示一下
 """
 # 0. 函数的外面，定义一个全局变量(列表)，用于保存用户信息
 user_list = [{"name": "rose", "age": 20, "tel": "222"},
              {"name": "mike", "age": 21, "tel": "111"}]
+
+
+# 显示某个学生
+def search_student():
+    """ 查询某个学生 """
+    # 1. 输入姓名
+    name = input("请输入需要查询的学生姓名：")
+    # 2. 通过for遍历，取出一个字典user_dict
+    for user_dict in user_list:
+        # 2.1 user_dict[‘name’]和输入姓名判断
+        if user_dict["name"] == name:
+            # 2.1.1 如果相等，输出用户信息，退出循环
+            print("查询到学生信息如下：")
+            print("%s\t%02d\t\t%s" % (user_dict['name'], user_dict['age'], user_dict['tel']))
+            break
+
+        # 3. for中的else，循环执行完毕，没有break，说明用户不存在，提示一下
+        else:
+            print("查无此人，请重新输入")
+
+
+# 定义显示所有学生信息的函数
+def show_student():
+    """显示所有学生信息"""
+    # 1. 遍历前，打印一些提示信息：序号    姓名  年龄  电话
+    print("序号\t\t姓名\t\t年龄\t\t电话")
+    # 2. 遍历 for 索引位置，字典 in enumerate(user_list)：
+    for i, user_dict in enumerate(user_list):
+        # 2.1 打印一个用户的信息 索引位置+1，user_dict[‘name’]……
+        print("%d\t\t%s\t%02d\t\t%s" % (i + 1, user_dict['name'], user_dict['age'], user_dict['tel']))
 
 
 # 定义新建学生的函数
@@ -52,8 +87,10 @@ def main():
             add_student()
         elif num == 2:
             print("查询所有学生")
+            show_student()
         elif num == 3:
             print("查询某个学生")
+            search_student()
         elif num == 4:
             print("修改某个学生")
         elif num == 5:
