@@ -9,6 +9,6 @@
 password = input("请输入命名：")
 print(type(password))
 # %s,格式化打印
-print("你输入的密码是：%s" % (password))
+print("你输入的密码是：%s" % password)
 # 直接打印看不出啥类型
 
